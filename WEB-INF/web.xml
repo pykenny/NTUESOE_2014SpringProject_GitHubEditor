@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+    
+    <display-name>HelloWorld</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+       
+    <servlet>
+        <servlet-name>Hello</servlet-name>
+        <servlet-class>example.Hello</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>Hello</servlet-name>
+    	<url-pattern>/hello</url-pattern>    
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>example.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>Login</servlet-name>
+    	<url-pattern>/login</url-pattern>    
+    </servlet-mapping>
+      
+    <servlet>
+        <servlet-name>Callback</servlet-name>
+        <servlet-class>example.Callback</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>Callback</servlet-name>
+    	<url-pattern>/callback</url-pattern>    
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Information</servlet-name>
+        <servlet-class>example.Information</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>Information</servlet-name>
+    	<url-pattern>/info</url-pattern>    
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>example.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>Logout</servlet-name>
+    	<url-pattern>/logout</url-pattern>    
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GithubProjectServlet</servlet-name>
+        <servlet-class>example.GithubProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>GithubProjectServlet</servlet-name>
+    	<url-pattern>/github</url-pattern>    
+    </servlet-mapping>    
+    
+    <servlet>
+        <servlet-name>LoadContent</servlet-name>
+        <servlet-class>example.LoadContent</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>LoadContent</servlet-name>
+    	<url-pattern>/content</url-pattern>    
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateData</servlet-name>
+        <servlet-class>example.UpdateData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>UpdateData</servlet-name>
+    	<url-pattern>/submit</url-pattern>    
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>EditBack</servlet-name>
+        <servlet-class>example.EditBack</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>EditBack</servlet-name>
+    	<url-pattern>/editback</url-pattern>    
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <jsp-file>/profile.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

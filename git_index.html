@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+	<title>GitHub Editor Index</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Github Online Editor!</a>
+        </div>
+      </div>
+    </div>
+    
+    <div style="width: 100%; height: 600px; padding: 10px;">
+    	<div class="row">
+    		<div class="col-md-12 main">
+    			<h1>GitHub Edit System</h1>
+    		</div>
+    	</div>
+    	<div style="width:100%; height:85%;">
+    	
+    		<div style="width:33%; height:80%; display:inline-block;">
+    		<div id="login" style="width:80%; height:100%; background-color:#6666FF; font-size:30px; color:rgb(255,255,255); cursor:pointer;'">
+    			<span style="margin:18px;">LOGIN</span>
+    		</div>
+    		</div>
+    		
+    		<div style="width:33%; height:80%; display:inline-block;">
+    		<div id="tutorial" style="width:80%; height:100%; background-color: #66CC66; font-size:30px; color:rgb(255,255,255); cursor:pointer;">
+    			<span style="margin:18px;">TUTORIAL</span>
+    		</div>
+    		</div>
+    		
+    		<div style="width:33%; height:80%; display:inline-block;">
+    		<div id="termofservice" style="width:80%; height:100%; background-color: #CC33FF; font-size:30px; color:rgb(255,255,255); cursor:pointer;">
+    			<span style="margin:18px;">Terms of Service</span>
+    		</div>
+    		</div>
+    		
+    	</div>
+    </div>
+
+	<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav navbar-right">
+            <li>This is Footer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+    	$("#login").click(function(){
+    		window.location.href = "http://localhost:8080/HelloWorld/login";
+    	});
+    </script>
+
+</body>
+</html>

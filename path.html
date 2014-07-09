@@ -1,0 +1,179 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Hello App Engine</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  	<script src="./js/purl.js"></script>
+  	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+  
+  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">GitHub Edit System</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="username" href="http://localhost:8080/HelloWorld/profile.jsp">Username</a></li>
+            <li><a href="#">Help</a></li>
+            <li id="log_out"><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+	<div class="container-fluid">
+      <div class="row" id="PathList" hidden=true>
+      
+        <div class="col-sm-9 col-md-10 main">
+
+		  <div class = "col-sm-8 col-md-8">
+		  	<div class = input-group>
+		     <input type="text" class="form-control" id="pathtext" value="https://api.github.com/repos/elliot79313/cklab_project102-1/contents/">
+             <span class = "input-group-btn">
+             	<button type="button" class="btn btn-primary" id="go">Go</button>
+		  	 </span>
+		  	</div>
+		  </div>
+          
+		  <div class="table-responsive">
+            <table id="pathtable" class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="15%">File/Dir</th>
+                  <th width="85%">Name</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li>List line 1</li>
+            <li>List line 2</li>
+            <li>List line 3</li>
+          </ul>
+        </div>
+      
+	  </div>
+    </div>
+	
+	<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-collapse collapse">
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+        	$.get("./info", null, null, "json").success(function(resp){
+        		if(resp.access == true){
+            		$("#PathList").show();
+            		Goto();
+            		$("#go").click(function(){
+                    	var url = $("input:text").val();
+                    	Goto(url);
+            		});
+            
+            		$("#log_out").click(function(){
+               			$.get("./logout", null, null, "json")
+                			.success(function(resp){
+                			if(resp.status = true){
+                				alert("Log out success!");
+                				window.location.href = "http://localhost:8080/HelloWorld/git_index.html";
+                			}
+                		});
+        			});
+            		$("#username").html(resp.user);
+        		} else {
+        			alert("Please log in again!");
+        			window.location.href = "http://localhost:8080/HelloWorld/login";
+        		}
+        	});
+        });
+
+        var checkresp;
+        var checkall;
+        
+        function Goto(path){
+        	/* claer tbody content */
+        	$("#pathtable tbody").empty();
+        	var rowcontent = "";
+        	/* get content and insert rows into table */
+            $.get("./github",{"d":path },null,"json").success(function(resp){
+            	if(path!=null){
+                	if(path.split("/").length>7 && path.split("/")[7]!=""){
+                    	rowcontent = "<tr><td style=\"cursor:pointer;\">＊上一層</td><td></td></tr>"
+                    	$("#pathtable tbody").append(rowcontent);
+                    	var tablerows = $("#pathtable tbody tr")
+                    	$(tablerows[0]).click(function(){
+                    		var paths = path.split("/");
+                    		paths.pop();
+                    		$("input:text").val(paths.join("/"));
+                            $("#go").click();
+                    	});
+                    }
+                }
+
+                var dirarr = [];
+                var filearr = [];
+                var showarr = [];
+                
+                checkresp = resp;
+                
+                $.map(resp, function(elem){
+                	
+                	if(elem["type"] == "file"){
+                    	filearr.push(elem);
+                    }
+                    else{
+                        dirarr.push(elem);
+                    }
+                });
+                
+                showarr = dirarr.concat(filearr);
+                
+                checkall = showarr;
+                
+                $.each(showarr, function(index, value){
+                	if(value.type == "file"){
+                		rowcontent = "<tr style=\"cursor:pointer;\"><td><span class=\"glyphicon glyphicon-file\"></span> FILE</td><td>" + value.name + "</td></tr>";
+                	}
+                	else{
+                		rowcontent = "<tr style=\"cursor:pointer;\"><td><span class=\"glyphicon glyphicon-folder-close\"></span> DIR</td><td>" + value.name + "</td></tr>";
+                	}
+                    $("#pathtable tbody").append(rowcontent);
+                    var tablerows = $("#pathtable tbody tr")
+                    if(value.type == "file"){
+                    	$(tablerows[tablerows.length - 1]).click(function(){
+                    		var reqpath = "?path=" + value.path;
+                    		window.location.href = "http://localhost:8080/HelloWorld/editor.html" + reqpath;
+                    	});
+                    }
+                    else{
+						$(tablerows[tablerows.length - 1]).click(function(){
+                        	$("input:text").val(value.url);
+                        	$("#go").click();
+                        });
+                    }
+                });       
+        	})
+        }
+    </script>
+  </body>
+</html>
