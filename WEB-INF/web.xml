@@ -7,17 +7,8 @@
     
     <display-name>HelloWorld</display-name>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>git_index.html</welcome-file>
     </welcome-file-list>
-       
-    <servlet>
-        <servlet-name>Hello</servlet-name>
-        <servlet-class>example.Hello</servlet-class>
-    </servlet>
-    <servlet-mapping>
-    	<servlet-name>Hello</servlet-name>
-    	<url-pattern>/hello</url-pattern>    
-    </servlet-mapping>
     
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -80,15 +71,6 @@
     <servlet-mapping>
     	<servlet-name>UpdateData</servlet-name>
     	<url-pattern>/submit</url-pattern>    
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>EditBack</servlet-name>
-        <servlet-class>example.EditBack</servlet-class>
-    </servlet>
-    <servlet-mapping>
-    	<servlet-name>EditBack</servlet-name>
-    	<url-pattern>/editback</url-pattern>    
     </servlet-mapping>
     
     <servlet>
