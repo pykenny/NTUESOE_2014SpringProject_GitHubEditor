@@ -65,7 +65,7 @@ if(access_token == null){
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-			<li><a href="http://localhost:8080/HelloWorld/path.html">Back to DIR</a></li>
+			<li><a href="http://192.168.11.101:8080/HelloWorld/path.html">Back to DIR</a></li>
             <li><a href="#">Help</a></li>
             <li id="log_out"><a href="#">Logout</a></li>
           </ul>
@@ -131,7 +131,7 @@ if(access_token == null){
 			 .success(function(resp){
 				if(resp.status = true){
 					alert("Log out success!");
-					window.location.href = "http://localhost:8080/HelloWorld/git_index.html";
+					window.location.href = "http://192.168.11.101:8080/HelloWorld/git_index.html";
 			 	}
 			});
 		});

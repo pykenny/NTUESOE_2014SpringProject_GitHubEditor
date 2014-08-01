@@ -24,7 +24,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a id="username" href="http://localhost:8080/HelloWorld/profile.jsp">Username</a></li>
+            <li><a id="username" href="http://192.168.11.101:8080/HelloWorld/profile.jsp">Username</a></li>
             <li><a href="#">Help</a></li>
             <li id="log_out"><a href="#">Logout</a></li>
           </ul>
@@ -95,14 +95,14 @@
                 			.success(function(resp){
                 			if(resp.status = true){
                 				alert("Log out success!");
-                				window.location.href = "http://localhost:8080/HelloWorld/git_index.html";
+                				window.location.href = "http://192.168.11.101:8080/HelloWorld/git_index.html";
                 			}
                 		});
         			});
             		$("#username").html(resp.user);
         		} else {
         			alert("Please log in again!");
-        			window.location.href = "http://localhost:8080/HelloWorld/login";
+        			window.location.href = "http://192.168.11.101:8080/HelloWorld/login";
         		}
         	});
         });
@@ -162,7 +162,7 @@
                     if(value.type == "file"){
                     	$(tablerows[tablerows.length - 1]).click(function(){
                     		var reqpath = "?path=" + value.path;
-                    		window.location.href = "http://localhost:8080/HelloWorld/editor.html" + reqpath;
+                    		window.location.href = "http://192.168.11.101:8080/HelloWorld/editor.html" + reqpath;
                     	});
                     }
                     else{

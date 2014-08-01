@@ -67,7 +67,7 @@ public class Callback extends HttpServlet{
 	       
 	   } finally {
 		   httpclient.close();
-	       response.sendRedirect("http://localhost:8080/HelloWorld/path.html");
+	       response.sendRedirect("http://192.168.11.101:8080/HelloWorld/path.html");
 	   }
 	   	   
 	   return;
